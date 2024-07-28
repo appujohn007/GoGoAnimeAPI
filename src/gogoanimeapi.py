@@ -13,7 +13,7 @@ class gogoanime():
 
     def get_search_results(query):
         try:
-            url1 = f"https://gogoanime.fi/search.html?keyword={query}"
+            url1 = f"https://anitaku.to/search.html?keyword={query}"
             session = HTMLSession()
             response = session.get(url1)
             response_html = response.text
@@ -34,7 +34,7 @@ class gogoanime():
 
     def get_anime_details(animeid):
         try:
-            animelink = 'https://gogoanime.fi/category/{}'.format(animeid)
+            animelink = 'https://anitaku.to/category/{}'.format(animeid)
             response = requests.get(animelink)
             plainText = response.text
             soup = BeautifulSoup(plainText, "lxml")
@@ -73,14 +73,14 @@ class gogoanime():
 
     def get_episodes_link(animeid, episode_num):
         try:
-            animelink = f'https://gogoanime.fi/category/{animeid}'
+            animelink = f'https://anitaku.to/category/{animeid}'
             response = requests.get(animelink)
             plainText = response.text
             soup = BeautifulSoup(plainText, "lxml")
             lnk = soup.find(id="episode_page")
             source_url = lnk.find("li").a
             tit_url = soup.find("div", {"class": "anime_info_body_bg"}).h1.string
-            URL_PATTERN = 'https://gogoanime.pe/{}-episode-{}'
+            URL_PATTERN = 'https://anitaku.to/{}-episode-{}'
             url = URL_PATTERN.format(animeid, episode_num)
             srcCode = requests.get(url)
             plainText = srcCode.text
@@ -111,7 +111,7 @@ class gogoanime():
 
     def get_by_genre(genre_name, page):
         try:
-            url = f"https://gogoanime.fi/genre/{genre_name}?page={page}"
+            url = f"https://anitaku.to/genre/{genre_name}?page={page}"
             response = requests.get(url)
             plainText = response.text
             soup = BeautifulSoup(plainText, "lxml")
