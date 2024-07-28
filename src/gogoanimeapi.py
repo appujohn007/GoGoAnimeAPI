@@ -42,6 +42,7 @@ class gogoanime():
             imgg = source_url.get('src')
             tit_url = soup.find("div", {"class": "anime_info_body_bg"}).h1.string
             lis = soup.find_all('p', {"class": "type"})
+            print(f"list = {lis}")
             plot_sum = lis[1]
             pl = plot_sum.get_text().split(':')
             pl.remove(pl[0])
